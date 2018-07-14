@@ -10,6 +10,12 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <span class="welcome-message">
+        <%= I18n.t("layout.welcome_message", user: current_user.name) %>
+        <%= link_to "(#{I18n.t("layout.sign_out")})", destroy_user_session_path, method: :delete %>
+      </span>
+    <% end %>
     <%= yield %>
   </body>
 </html>
