@@ -23,8 +23,11 @@
         <td><%= question.question_status %></td>
         <td><%= question.user %></td>
         <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Evaluate', question_evaluate_question_path(question) %></td>
+        <% if current_user.client? && question.question_status.name == "Denied" %>
+          <td><%= link_to 'Edit', edit_question_path(question) %></td>
+        <% elsif can? :evaluate_question, RevisionHistory %>
+          <td><%= link_to 'Evaluate', question_evaluate_question_path(question) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +35,8 @@
 
 <br>
 
-<%= link_to 'New Question', new_question_path %>
+<% if can? :create, Question %>
+
+  <%= link_to 'New Question', new_question_path %>
+
+<% end %>

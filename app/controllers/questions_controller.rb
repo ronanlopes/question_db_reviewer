@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    @questions = current_user.client? ? current_user.questions.includes(:question_status) : Question.all.includes(:question_status)
   end
 
   # GET /questions/1
