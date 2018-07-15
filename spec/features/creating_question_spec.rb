@@ -34,7 +34,7 @@ RSpec.feature "Creating Questions" do
 		expect(page).to have_content "Content can't be blank"
 		expect(page).to have_content "Source can't be blank"
 		expect(page).to have_content "Year can't be blank"
-		expect(page).to have_content "should have exactly 5 options"
+		expect(page).to have_content "Choices content can't be blank"
 
 
 	end

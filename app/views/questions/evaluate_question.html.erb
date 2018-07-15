@@ -1,0 +1,64 @@
+<h1>Evaluating Question</h1>
+
+<%= form_with(model: @revision_history, local: true, url: question_update_question_review_path) do |form| %>
+  <% if @revision_history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@revision_history.errors.count, "error") %> prohibited this question revision from being saved:</h2>
+
+      <ul>
+      <% @revision_history.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= @revision_history.question.content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :source %>
+    <%= @revision_history.question.source %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= @revision_history.question.year %>
+  </div
+
+  <div class="field">
+    <%= form.label :choices %>
+
+    <% @revision_history.question.choices.each do |choice| %>
+      <p>
+          <%= choice %>
+      </p>
+    <% end %>
+
+  </div>
+
+
+  <div class="field">
+    <%= form.label :question_status %>
+	<%= form.select :question_status_id, QuestionStatus.all.collect { |question_status| [question_status.name, question_status.id] }, selected: @revision_history.question.question_status_id %>
+  </div
+
+
+  <div class="field">
+    
+    <%= form.label :comment %>
+    <%= form.text_area :comment %>
+
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', @question %> |
+<%= link_to 'Back', questions_path %>

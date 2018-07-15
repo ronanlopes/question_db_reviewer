@@ -145,3 +145,5 @@ en:
   layout:
     welcome_message: 'Welcome, %{user}!'
     sign_out: Sign out
+    correct: Correct
+    wrong: Wrong

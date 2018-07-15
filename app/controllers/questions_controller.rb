@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :evaluate_question, :update_question_review]
 
   # GET /questions
   # GET /questions.json
@@ -54,24 +54,42 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # DELETE /questions/1
-  # DELETE /questions/1.json
-  def destroy
-    @question.destroy
+  def evaluate_question
+    @revision_history = RevisionHistory.includes(:question).new(user: current_user, question: @question)
+  end
+
+  def update_question_review
+    @revision_history = RevisionHistory.new(revision_params)
+    @revision_history.user = current_user
+    @revision_history.question = @question
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
-      format.json { head :no_content }
+      @question.question_status = @revision_history.question_status
+      if @question.save && @revision_history.save
+        format.html { redirect_to @question, notice: 'Question was successfully reviewed.' }
+        format.json { render :show, status: :ok, location: @question }
+      else
+        format.html { render :evaluate_question }
+        format.json { render json: (@revision_history.errors + @question.errors), status: :unprocessable_entity }
+      end
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
-      @question = Question.find(params[:id])
+      @question = Question.find(params[:id] || params[:question_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:content, :source, :year, :question_status_id, :user_id, choices_attributes: [:id, :content, :correct])
+      params.require(:question).permit(:content, :source, :year, :question_status_id, :user_id, 
+        choices_attributes: [:id, :content, :correct]
+      )
     end
+
+    def revision_params
+      params.require(:revision_history).permit(:comment, :question_status_id)
+    end
+
+
 end
