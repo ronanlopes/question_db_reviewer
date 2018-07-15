@@ -15,6 +15,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     @question = Question.new
+    5.times { @question.choices.build }
   end
 
   # GET /questions/1/edit
@@ -25,6 +26,8 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
+    @question.question_status = QuestionStatus.find_or_create_by(name: "Pending")
+    @question.user = current_user
 
     respond_to do |format|
       if @question.save
@@ -69,6 +72,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:content, :source, :year, :question_status_id, :user_id)
+      params.require(:question).permit(:content, :source, :year, :question_status_id, :user_id, choices_attributes: [:id, :content, :correct])
     end
 end

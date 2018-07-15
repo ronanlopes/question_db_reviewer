@@ -16,9 +16,39 @@ RSpec.feature "Users signin" do
 
 		expect(page).to have_content("Signed in successfully")
 		expect(page).to have_content("Welcome, #{@john.name}")
-		expect(page).not_to have_link("Sign in")
 		expect(page).not_to have_link("Sign up")
 		expect(page).to have_link("Sign out")
+
+	end
+
+
+	scenario "with blank credentials" do
+
+		visit "/"
+
+		fill_in "Email", with: ""
+		fill_in "Password", with: ""
+		click_button "Log in"
+
+		expect(page).to have_content("Invalid Email or password")
+		expect(page).to have_link("Sign up")
+		expect(page).not_to have_link("Sign out")
+
+	end
+
+
+
+	scenario "with invalid credentials" do
+
+		visit "/"
+
+		fill_in "Email", with: "invalid@email.com"
+		fill_in "Password", with: "invalidpassword"
+		click_button "Log in"
+
+		expect(page).to have_content("Invalid Email or password")
+		expect(page).to have_link("Sign up")
+		expect(page).not_to have_link("Sign out")
 
 	end
 

@@ -11,3 +11,7 @@ if !user
 	user.password = "admin123"
 	user.save
 end
+
+["Pending", "Approved", "Denied"].each do |question_status|
+	QuestionStatus.find_or_create_by(name: question_status)
+end

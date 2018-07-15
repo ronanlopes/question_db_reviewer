@@ -9,6 +9,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+  def to_s
+  	self.name
+  end
 
   def set_role
   	self.role = Role.find_or_create_by(name: "Client") if !self.role

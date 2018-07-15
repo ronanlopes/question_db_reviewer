@@ -27,14 +27,17 @@
   </div>
 
   <div class="field">
-    <%= form.label :question_status_id %>
-    <%= form.text_field :question_status_id %>
+    <%= form.label :choices %>
+
+    <%= form.fields_for :choices do |choice| %>
+      <p>
+          - <%= choice.text_field :content %>
+          <%= choice.check_box :correct %>
+      </p>
+    <% end %>
+
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>
