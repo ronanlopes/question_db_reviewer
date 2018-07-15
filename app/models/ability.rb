@@ -5,7 +5,7 @@ class Ability
 
     if user.admin?
         can :manage, :all
-        cannot [:new,:create], Question
+        cannot :manage, Question
     elsif user.client?
         can [:new,:create], Question
         can :manage, :questions, user_id: user.id

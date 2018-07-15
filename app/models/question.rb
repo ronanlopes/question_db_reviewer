@@ -10,4 +10,13 @@ class Question < ApplicationRecord
 
   validates :content, :source, :year, presence: true
 
+  before_update :set_pending_status
+
+
+  #could use a observer if the logic grows too much
+  def set_pending_status
+  	self.question_status = QuestionStatus.find_or_create_by(name: "Pending")
+  end
+
+
 end
