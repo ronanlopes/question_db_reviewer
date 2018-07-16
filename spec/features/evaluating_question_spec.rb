@@ -4,11 +4,10 @@ RSpec.feature "Evaluating Questions" do
 
 	before do
 		puts "before"
-	 	@john = FactoryBot.create(:user)
-	 	login_as(@john, :scope => :user)
+	 	@john = FactoryBot.create(:admin_user)
+	 	login_as(@john, :scope => :admin_user)
 	 	FactoryBot.create(:question)
 	 	QuestionStatus.create!(name: "Approved")
-		visit questions_path
 	end
 
 

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.feature "Creating Questions" do
 
 	before do
-	 	@john = FactoryBot.create(:user)
-	 	login_as(@john, :scope => :user)
+	 	@john = FactoryBot.create(:client_user)
+	 	login_as(@john, :scope => :client_user)
 		visit questions_path
 		click_link "New Question"
 	end

@@ -14,7 +14,7 @@ FactoryBot.define do
     sequence(:content) { |n| "question #{n}" }
     source "BBC"
     year "1999"
-    user
+    association :user, factory: :client_user
     question_status
 
      before :create do |question|
