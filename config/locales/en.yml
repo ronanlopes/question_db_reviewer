@@ -25,6 +25,12 @@ en:
         unconfirmed_email: Unconfirmed email
         unlock_token: Unlock token
         updated_at: Updated at
+      question:
+        index: Question List
+        content: Content
+        source: Source
+        year: Year
+      cerquilha: "#"
     models:
       user:
         one: User
@@ -154,3 +160,6 @@ en:
     sign_out: Sign out
     correct: Correct
     wrong: Wrong
+  helpers:
+    links:
+      add: Add %{model}
