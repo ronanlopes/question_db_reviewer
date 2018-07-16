@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy, :evaluate_question, :update_question_review]
+  load_and_authorize_resource
 
   # GET /questions
   # GET /questions.json
@@ -30,7 +31,7 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-    @question.question_status = QuestionStatus.find_or_create_by(name: "Pending")
+    @question.question_status = QuestionStatus.find_by(name: "Pending")
     @question.user = current_user
 
     respond_to do |format|
@@ -48,6 +49,7 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1.json
   def update
     respond_to do |format|
+      @question.question_status = QuestionStatus.find_by(name: "Pending")
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.json { render :show, status: :ok, location: @question }
@@ -69,7 +71,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       @question.question_status = @revision_history.question_status
       if @question.save && @revision_history.save
-        format.html { redirect_to @question, notice: 'Question was successfully reviewed.' }
+        format.html { redirect_to questions_path(question_status: "Pending"), notice: 'Question was successfully reviewed.' }
         format.json { render :show, status: :ok, location: @question }
       else
         format.html { render :evaluate_question }

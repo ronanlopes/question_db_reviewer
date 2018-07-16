@@ -5,10 +5,10 @@ class Ability
 
     if user.admin?
         can :manage, :all
-        cannot :manage, Question
+        cannot [:create, :update], Question
     elsif user.client?
-        can [:new,:create], Question
-        can :manage, :questions, user_id: user.id
+        can [:new,:create, :read], Question
+        can [:edit, :update], Question, {user_id: user.id, question_status_id: QuestionStatus.find_by(name: "Denied").try(:id)}
     end
 
   end

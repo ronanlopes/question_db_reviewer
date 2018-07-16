@@ -137,6 +137,7 @@ en:
       number_of_choices: should have exactly 5 options
       confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
       expired: has expired, please request a new one
+      comment_required: is required when you reject the question
       not_found: not found
       not_locked: was not locked
       not_saved:

@@ -15,15 +15,15 @@ class User < ApplicationRecord
   end
 
   def set_role
-  	self.role = Role.find_or_create_by(name: "Client") if !self.role
+  	self.role = Role.find_by(name: "Client") if !self.role
   end
 
   def admin?
-  	self.role == Role.find_or_create_by(name: "Administrator")
+  	self.role == Role.find_by(name: "Administrator")
   end
 
   def client?
-  	self.role == Role.find_or_create_by(name: "Client")
+  	self.role == Role.find_by(name: "Client")
   end
 
 
