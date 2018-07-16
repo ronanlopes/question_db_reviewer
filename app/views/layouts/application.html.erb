@@ -16,9 +16,6 @@
         <%= link_to "(#{I18n.t("layout.sign_out")})", destroy_user_session_path, method: :delete %>
       </span>
     <% end %>
-    <%- flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, :id => "error_explanation" if msg.is_a?(String) %>
-    <%- end -%>  
     <%= yield %>
   </body>
 </html>

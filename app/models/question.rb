@@ -10,4 +10,19 @@ class Question < ApplicationRecord
 
   validates :content, :source, :year, presence: true
 
+  before_validation :set_question_status
+	validate :check_correct_answer
+
+  def set_question_status
+  	self.question_status = QuestionStatus.find_by(name: "Pending") if !self.question_status
+	end
+
+	def check_correct_answer
+		if self.choices.present? && choices.select{|c| c.correct}.size < 1
+			self.errors.add(:base, I18n.t("errors.messages.at_least_one_correct_answer"))
+		end
+	end
+
+
+
 end

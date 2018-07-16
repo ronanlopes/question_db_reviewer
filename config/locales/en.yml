@@ -135,6 +135,7 @@ en:
     messages:
       already_confirmed: was already confirmed, please try signing in
       number_of_choices: should have exactly 5 options
+      at_least_one_correct_answer: Your question should have at least 1 correct answer
       confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
       expired: has expired, please request a new one
       comment_required: is required when you reject the question
