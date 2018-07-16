@@ -1,0 +1,191 @@
+
+.twitter-media{
+  width: 100%;
+  height: auto;
+}
+
+.facebook-media{
+  width: 100%;
+  height: auto;
+}
+
+.instagram-media{
+  width: 100%;
+  height: auto;
+}
+
+.facebook{
+  background-color: #4E69A2 !important;
+  border-color: #3A5795 !important;
+}
+
+.twitter{
+  background-color: #4E9FDB !important;
+  border-color: #1A5AA5 !important;
+}
+
+.instagram{
+  background-color: #B79F87 !important;
+  border-color: #7E6454 !important;
+}
+
+#login-wrapper{
+  padding: 15px;
+  background-color: #EEE;
+}
+
+.panel-social{
+  color: #FFF;
+  min-height: 130px;
+}
+
+.loading-info{
+  text-align: center;
+}
+
+.error-info{
+  text-align: center;
+  font-style: italic;
+}
+
+.social-thumb{
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.white-text{
+  color: #FFF !important;
+}
+
+
+/*
+ * Row with equal height columns
+ * --------------------------------------------------
+ */
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+
+.connect-social{
+  padding: 15px;
+}
+
+.no-padding{
+  padding: 0px;
+}
+
+.loading{
+  color: #555;
+}
+
+.titulo {
+  margin-right: 20px;
+}
+
+.ibox-title{
+  background-color: rgb(255, 255, 255);
+  border-bottom-color: rgb(231, 234, 236);
+  border-bottom-style: none;
+  border-bottom-width: 0px;
+  border-image-outset: 0;
+  border-image-repeat: stretch stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(231, 234, 236);
+  border-left-style: solid;
+  border-left-width: 0px;
+  border-right-color: rgb(231, 234, 236);
+  border-right-style: solid;
+  border-right-width: 0px;
+  border-top-color: rgb(231, 234, 236);
+  border-top-style: solid;
+  border-top-width: 3px;
+  box-sizing: border-box;
+  color: rgb(103, 106, 108);
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18.5667px;
+  margin-bottom: 0px;
+  min-height: 48px;
+  padding-bottom: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 14px;
+}
+
+.ibox-content{
+  background-color: rgb(255, 255, 255);
+  border-bottom-color: rgb(231, 234, 236);
+  border-bottom-style: none;
+  border-bottom-width: 0px;
+  border-image-outset: 0;
+  border-image-repeat: stretch stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(231, 234, 236);
+  border-left-style: solid;
+  border-left-width: 0px;
+  border-right-color: rgb(231, 234, 236);
+  border-right-style: solid;
+  border-right-width: 0px;
+  border-top-color: rgb(231, 234, 236);
+  border-top-style: solid;
+  border-top-width: 1px;
+  box-sizing: border-box;
+  clear: both;
+  color: rgb(103, 106, 108);
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18.5667px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 15px;
+}
+
+.page-header h1{
+  color: #666;
+  font-size: 2em;
+}
+
+.loading-message{
+  text-align:center;
+  font-size: 1.2em;
+  display: block;
+  margin: auto;
+}
+
+.form-actions{
+  text-align: center;
+}
+
+.hr-line-dashed {
+  border-top: 1px dashed #DDD;
+  height: 1px;
+  margin: 20px 0;
+}
+
+.hr-line-solid {
+  border-top: 1px solid #DDD;
+  height: 1px;
+  margin: 25px 0;
+}
+
+.modal-body .hr-line-solid{
+  display: none;
+}
+
+.panel-heading{
+  text-align: center;
+}
+
+.error-dialog{
+  margin-top: 50px;
+}

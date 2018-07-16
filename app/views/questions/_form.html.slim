@@ -1,0 +1,14 @@
+= simple_form_for @question, :html => { :class => "form-horizontal" } do |f|
+  = f.input :content
+  = error_span(@question[:content])
+  = f.input :source
+  = error_span(@question[:source])
+  = f.input :year
+  = error_span(@question[:year])
+  = f.input :question_status_id
+  = error_span(@question[:question_status_id])
+  = f.input :user_id
+  = error_span(@question[:user_id])
+  = f.button :submit, :class => 'btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), questions_path, :class => 'btn btn-default'

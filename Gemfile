@@ -37,7 +37,20 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'cancancan', '~> 2.0'
-
+gem 'simple_form'
+gem 'slim-rails'
+gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails-confirm'
+gem 'font-awesome-rails'
+gem 'chosen-rails'
+gem 'meiomask-rails'
+gem 'jquery-rails'
+gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'jquery-ui-rails'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 
 group :development, :test do
   gem 'rspec-rails'

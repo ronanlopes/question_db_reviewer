@@ -1,0 +1,63 @@
+html
+  head
+    title = "Rails 5 - Projeto Base"
+
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    //= favicon_link_tag 'icon.png', type: 'image/png'
+
+  body
+    #wrapper class=("#{params[:controller]}.#{params[:action]}")
+      /! Navigation
+      nav.navbar.navbar-default.navbar-static-top role="navigation" style=("margin-bottom: 0")
+        .navbar-header
+          - if current_user
+            button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button"
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+          a.navbar-brand#logo-topo href="/"
+            i.fa.fa-database.fa-fw
+            '
+            'Question DB Reviewer
+        - if current_user
+          /! /.navbar-top-links
+          .navbar-default.sidebar role="navigation"
+            .sidebar-nav.navbar-collapse
+              ul#side-menu.nav
+                li.sidebar-search
+                  .input-group.custom-search-form
+                    input.form-control placeholder="Search..." type="text"
+                    span.input-group-btn
+                      button.btn.btn-default type="button"
+                        i.fa.fa-search
+                  /! /input-group
+
+                = generate_menu
+                li
+                  = link_to("<i class='fa fa-power-off'></i> <span class='nav-label'> Sair </span>".html_safe, destroy_user_session_path, :method => :delete)
+
+
+                / li
+                /   a href="#"
+                /     i.fa.fa-bar-chart-o.fa-fw
+                /     | Charts
+                /     span.fa.arrow
+                /   ul.nav.nav-second-level
+                /     li
+                /       a href="flot.html"  Flot Charts
+                /     li
+                /       a href="morris.html"  Morris.js Charts
+
+
+      div id=(current_user ? "page-wrapper" : "login-wrapper")
+        = bootstrap_flash
+        = yield
+
+
+
+    = javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js") && params[:controller] != "application"
+
+    = yield :javascript
