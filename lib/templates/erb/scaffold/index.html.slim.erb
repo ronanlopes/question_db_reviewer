@@ -1,7 +1,7 @@
 h2.section-title.no-margin-top
   span.titulo
     = I18n.t("activerecord.attributes.<%= singular_table_name %>.index")
-  = botao_adicionar(<%= singular_table_name.camelize %>)
+  = save_button(<%= singular_table_name.camelize %>)
 
 .row
   .col-md-12

@@ -1,13 +1,13 @@
 module ApplicationHelper
 
-  def botao_adicionar(model, prefix:"/#{model.name.tableize}", callback: nil)
+  def add_button(model, prefix:"/#{model.name.tableize}", callback: nil)
     link_to("<i class='fa fa-plus-circle no-margin-right'></i> #{I18n.t('helpers.links.add', model: I18n.t("activerecord.models.#{model.name.underscore}.one"))}".html_safe,
       "#",
       data: {url: "#{prefix}/new", callback: callback},
       :class => 'btn btn-default btn-new') if can?(:create, model)
   end
 
-  def botao_salvar(builder)
+  def save_button(builder)
 
     button_tag type: 'submit', class: "btn btn-primary" do
       "<i class='fa fa-floppy-o' aria-hidden='true'></i> ".html_safe +
@@ -17,14 +17,13 @@ module ApplicationHelper
 
   end
 
-  def botao_cancelar(builder)
+  def cancel_button(builder)
     button_tag(type: 'button', class: 'btn btn-default', data:{dismiss: "modal"}) do
       "<i class='fa fa-times-circle-o' aria-hidden='true'></i> ".html_safe +
       t('.cancel', :default => t("helpers.links.cancel"))
     end
   end
 
-  #Booleano para string - exibição na tabela
   def bool_to_s(bool)
     bool ? I18n.t("true_bool") : I18n.t("false_bool")
   end

@@ -5,7 +5,7 @@
       h2.section-title.no-margin-top
         span.titulo
           = I18n.t("activerecord.attributes.question.index")
-        = botao_adicionar(Question)
+        = add_button(Question)
   .row
     .col-md-12
       table.table.table-striped.table-responsive.table-bordered#questions_datatable data-source="#{send("questions_url", format: 'json')}"

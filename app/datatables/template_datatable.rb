@@ -6,7 +6,6 @@ class TemplateDatatable
   delegate :params, to: :@view
   delegate :url_helpers, to: 'Rails.application.routes'
 
-  #View_context para acessar dados da sessão
   def initialize(view)
     @view = view
   end
@@ -20,7 +19,6 @@ class TemplateDatatable
     }
   end
 
-  #Booleano para string - exibição na tabela
   def bool_to_s(bool)
     bool ? I18n.t("true_bool") : I18n.t("false_bool")
   end
@@ -32,7 +30,6 @@ class TemplateDatatable
 
 private
 
-  #Coluna de ações
   def links(object)
     edit_button(object).to_s+" "+delete_button(object).to_s
   end
@@ -49,7 +46,6 @@ private
     params[:length].to_i
   end
 
-  #Por padrão, a ordenação aceita as colunas do model (pode ser sobrescrito na classe implementada)
   def sort_columns_collection
     @view.controller.controller_path.classify.constantize.column_names - ["created_at", "updated_at"]
   end
