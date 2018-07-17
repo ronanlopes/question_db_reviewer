@@ -118,3 +118,7 @@ body.modal-open {
 .panel-body {
   padding: 20px 40px;
 }
+
+.welcome-message{
+  float: right;
+}

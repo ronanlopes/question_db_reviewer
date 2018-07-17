@@ -6,8 +6,7 @@ RSpec.feature "Creating Questions" do
 		FactoryBot.create(:question_status)
 	 	@john = FactoryBot.create(:client_user)
 	 	login_as(@john, :scope => :user)
-		visit questions_path
-		click_link "New Question"
+		visit new_question_path
 	end
 
 
@@ -23,15 +22,15 @@ RSpec.feature "Creating Questions" do
 		fill_in "question_choices_attributes_4_content", with: "E choice"
 		find(:css, "#question_choices_attributes_0_correct").set(true)
 
-		click_button "Create Question"
+		click_button "Create"
 
-		expect(page).to have_content "Question was successfully created"
+		expect(page).to have_content "Question was created successfully"
 	end
 
 
 	scenario "A user submit a empty question" do
 
-		click_button "Create Question"
+		click_button "Create"
 
 		expect(page).to have_content "Content can't be blank"
 		expect(page).to have_content "Source can't be blank"
