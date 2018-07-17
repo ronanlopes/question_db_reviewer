@@ -12,7 +12,7 @@
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require rails.validations.customValidators
-//= require metisMenu
+#//= require metisMenu
 //= require raphael
 //= require sb-admin-2
 
@@ -30,9 +30,7 @@ app_control.init_before()
     window.initialize_objects()
 
   $('.btn-new').click ->
-    console.log "clicou"
     url = $(this).data("url")
-    console.log url
     callback = $(this).data("callback")
     modal_form({ url: url, callback: callback})
 

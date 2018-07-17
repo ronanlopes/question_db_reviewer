@@ -1,9 +1,20 @@
 .panel.panel-default
   .panel-heading
-    h5 Informações de Cadastro
+    h5 Question Register
   .panel-body
     = simple_form_for(@question, validate: true) do |f|
-      = f.error_notification
+
+      - if @question.errors.any?
+        .alert.alert-danger
+          h4
+            strong
+              = "#{pluralize(@question.errors.count, "error")} prohibited this question revision from being saved:"
+
+          ul
+            - @question.errors.full_messages.each do |message|
+              li
+                = message
+
 
       .form-inputs
 
@@ -13,21 +24,25 @@
 
       .form-inputs
 
-        = f.input :source
+        .row
+
+          .col-md-6
+
+            = f.input :source
+
+          .col-md-6
+
+            = f.input :year, as: :string
 
       .hr-line-dashed
 
       .form-inputs
 
-        = f.input :year
-
-      .hr-line-dashed
-
-      .form-inputs
-
-        = f.simple_fields_for :choices do |choice|
-          = choice.input :content
-          = choice.input :correct
+        .row
+          = f.simple_fields_for :choices do |choice|
+            .col-md-6
+              = choice.input :content, label: false
+              = choice.input :correct
 
       .hr-line-solid
 

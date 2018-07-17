@@ -1,4 +1,5 @@
 @custom_datatable = (dom_id, columns, row_callback) ->
+  console.log("custom data table")
   $("#" + dom_id).dataTable
     columns: columns
     bLengthChange: false

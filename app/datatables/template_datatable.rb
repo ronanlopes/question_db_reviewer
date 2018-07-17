@@ -34,7 +34,7 @@ private
 
   #Coluna de ações
   def links(object)
-    botao_editar(object).to_s+" "+botao_excluir(object).to_s
+    edit_button(object).to_s+" "+delete_button(object).to_s
   end
 
   def objects
@@ -68,13 +68,13 @@ private
   end
 
 
-  def botao_editar(object)
+  def edit_button(object)
     link_to("<i class=\"fa fa-edit no-margin-right\"></i> #{I18n.t('helpers.links.edit')}".html_safe,
       "#", data: {url: "/#{prefix_path(object)}/#{object.id}/edit"},
       :class => 'btn btn-ar btn-xs btn-info btn-edit') if @view.can?(:update, object)
   end
 
-  def botao_excluir(object)
+  def delete_button(object)
     link_to("<i class=\"fa fa-trash-o no-margin-right\"></i> #{I18n.t('helpers.links.destroy')}".html_safe,
       "/#{prefix_path(object)}/#{object.id}",
       :method => :delete, :data => {

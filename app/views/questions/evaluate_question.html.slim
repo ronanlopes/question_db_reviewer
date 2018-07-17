@@ -1,0 +1,35 @@
+.panel.panel-default
+  .panel-heading
+    h5 Question Review
+  .panel-body
+    = simple_form_for(@revision_history, validate: true, url: question_update_question_review_path) do |f|
+
+      - if @revision_history.errors.any?
+        .alert.alert-danger
+          h4
+            strong
+              = "#{pluralize(@revision_history.errors.count, "error")} prohibited this review from being saved:"
+
+          ul
+            - @revision_history.errors.full_messages.each do |message|
+              li
+                = message
+
+      .form-inputs
+
+        = f.association :question_status, collection: QuestionStatus.review, input_html: {class: "chosen-select"}
+
+      .hr-line-dashed
+
+      .form-inputs
+
+        = f.input :comment, as: :text
+
+      .hr-line-solid
+
+      .form-inputs
+        .hr-line-solid
+        .form-actions
+          = botao_salvar(f)
+          '
+          = botao_cancelar(f)

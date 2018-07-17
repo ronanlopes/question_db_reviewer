@@ -1,5 +1,12 @@
 en:
   activerecord:
+    messages:
+      create_success: was created successfully
+      update_success: was updated successfully
+      destroy_success: was destroyed successfully
+      evaluate_question_success: was evaluated successfully
+      update_question_review: was evaluated successfully
+
     attributes:
       user:
         confirmation_sent_at: Confirmation sent at
@@ -30,6 +37,8 @@ en:
         content: Content
         source: Source
         year: Year
+        user: Created by
+        status_question: Status
       cerquilha: "#"
     models:
       user:
@@ -146,8 +155,10 @@ en:
     messages:
       already_confirmed: was already confirmed, please try signing in
       number_of_choices: should have exactly 5 options
+      invalid_year: is not a valid number (1900 to current year)
       at_least_one_correct_answer: Your question should have at least 1 correct answer
       confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
+      cant_evaluate_not_pending: You can't evaluate a non-pending question
       expired: has expired, please request a new one
       comment_required: is required when you reject the question
       not_found: not found
@@ -163,3 +174,6 @@ en:
   helpers:
     links:
       add: Add %{model}
+      edit: Edit
+      evaluate: Evaluate
+      show: Show

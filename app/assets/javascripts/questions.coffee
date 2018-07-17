@@ -3,6 +3,8 @@ columns = [
   null,
   null,
   null,
+  null,
+  null,
   { type: null, sortable: false }
 ]
 

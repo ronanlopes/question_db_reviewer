@@ -9,6 +9,10 @@ class Question < ApplicationRecord
 	accepts_nested_attributes_for :revision_histories
 
   validates :content, :source, :year, presence: true
+	validates_inclusion_of :year, :in => 1900..Date.today.year, message: I18n.t("errors.messages.invalid_year")
+
+	delegate :name, to: :user, prefix: :user
+	delegate :name, to: :question_status, prefix: :question_status
 
   before_validation :set_question_status
 	validate :check_correct_answer

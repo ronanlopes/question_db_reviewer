@@ -124,7 +124,7 @@ modal_functions = ->
 
       $(window).resize()
       if $(this).find(".modal-body").html() == ""
-        modal.find(".modal-body").html("<span class='loading-message'><i class='fa fa-spinner fa-pulse fa-fw'></i> Aguarde...</h3>")
+        modal.find(".modal-body").html("<span class='loading-message'><i class='fa fa-spinner fa-pulse fa-fw'></i> Please wait...</h3>")
         $.get(url, (data) ->
 
           modal.find(".modal-body").html(data)
