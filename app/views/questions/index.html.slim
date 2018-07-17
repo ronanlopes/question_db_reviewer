@@ -8,19 +8,17 @@
         = botao_adicionar(Question)
   .row
     .col-md-12
-      .row
-        .col-md-12
-          table.table.table-striped.table-responsive.table-bordered#questions_datatable data-source="#{send("questions_url", format: 'json')}"
-            thead
-              tr
+      table.table.table-striped.table-responsive.table-bordered#questions_datatable data-source="#{send("questions_url", format: 'json')}"
+        thead
+          tr
 
-                th = I18n.t("activerecord.attributes.cerquilha")
-                th = I18n.t("activerecord.attributes.question.content")
-                th = I18n.t("activerecord.attributes.question.source")
-                th = I18n.t("activerecord.attributes.question.year")
-                th = I18n.t("activerecord.attributes.question.user")
-                th = I18n.t("activerecord.attributes.question.status_question")
-                th = I18n.t("helpers.actions")
+            th = I18n.t("activerecord.attributes.cerquilha")
+            th = I18n.t("activerecord.attributes.question.content")
+            th = I18n.t("activerecord.attributes.question.source")
+            th = I18n.t("activerecord.attributes.question.year")
+            th = I18n.t("activerecord.attributes.question.user")
+            th = I18n.t("activerecord.attributes.question.status_question")
+            th = I18n.t("helpers.actions")
 
-            tbody
+        tbody
 

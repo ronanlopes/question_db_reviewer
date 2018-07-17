@@ -31,9 +31,10 @@ html
                 li
                   = link_to("<i class='fa fa-power-off'></i> <span class='nav-label'> Logout </span>".html_safe, destroy_user_session_path, :method => :delete)
 
+
       div id=(current_user ? "page-wrapper" : "login-wrapper")
         - if current_user
-          span.welcome-message
+          h4.welcome-message
             =  "#{I18n.t("layout.welcome_message", user: current_user.name)} #{link_to "(#{I18n.t("layout.sign_out")})", destroy_user_session_path, method: :delete}".html_safe
 
         = bootstrap_flash

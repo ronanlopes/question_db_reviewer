@@ -39,6 +39,11 @@ en:
         year: Year
         user: Created by
         status_question: Status
+      revision_history:
+        status_question: Status
+        user: Reviewed by
+        comment: Comment
+
       cerquilha: "#"
     models:
       user:

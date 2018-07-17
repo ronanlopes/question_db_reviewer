@@ -4,6 +4,28 @@
   .panel-body
     = simple_form_for(@question, validate: true) do |f|
 
+      - if !@question.new_record? && @question.revision_histories.any?
+        .row
+          .col-md-12
+            h3 Question History
+            table.table.table-striped.table-responsive.table-bordered
+              thead
+                tr
+
+                  th = I18n.t("activerecord.attributes.cerquilha")
+                  th = I18n.t("activerecord.attributes.revision_history.user")
+                  th = I18n.t("activerecord.attributes.revision_history.status_question")
+                  th = I18n.t("activerecord.attributes.revision_history.comment")
+
+              tbody
+                - @question.revision_histories.each do |revision|
+                  tr
+                    td = revision.created_at
+                    td = revision.user_name
+                    td = revision.question_status_name
+                    td = revision.comment
+        .hr-line-dashed
+
       - if @question.errors.any?
         .alert.alert-danger
           h4

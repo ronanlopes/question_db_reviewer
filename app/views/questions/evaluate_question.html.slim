@@ -2,7 +2,62 @@
   .panel-heading
     h5 Question Review
   .panel-body
+
     = simple_form_for(@revision_history, validate: true, url: question_update_question_review_path) do |f|
+
+      - if @revision_history.question
+        h2.text-center Question Details
+        .row
+          .col-md-4
+            h4 
+              strong Content
+            = @revision_history.question.content
+          .col-md-4
+            h4 
+              strong Source
+            = @revision_history.question.source
+          .col-md-4
+            h4 
+              strong Year
+            = @revision_history.question.year
+        .row
+          .col-md-12
+            h4 
+              strong Choices
+            - @revision_history.question.choices.each do |choice|
+              .col-md-4
+                = choice
+
+        .hr-line-dashed
+        .row
+          .col-md-12
+            h3 Question History
+            table.table.table-striped.table-responsive.table-bordered
+              thead
+                tr
+
+                  th = I18n.t("activerecord.attributes.cerquilha")
+                  th = I18n.t("activerecord.attributes.revision_history.user")
+                  th = I18n.t("activerecord.attributes.revision_history.status_question")
+                  th = I18n.t("activerecord.attributes.revision_history.comment")
+
+              tbody
+                - if @revision_history.question.revision_histories.any?
+                  - @revision_history.question.revision_histories.each do |revision|
+                    tr
+                      td = revision.created_at
+                      td = revision.user_name
+                      td = revision.question_status_name
+                      td = revision.comment
+                - else
+                  tr
+                    td.text-center colspan=4
+                      i This question wasn't reviewed yet
+
+
+
+      .hr-line-dashed
+
 
       - if @revision_history.errors.any?
         .alert.alert-danger

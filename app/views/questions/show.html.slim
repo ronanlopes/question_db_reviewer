@@ -1,30 +1,47 @@
-- model_class = Question
-.page-header
-  h1=t '.title', :default => model_class.model_name.human.titleize
+h2.text-center Question Details
+.row
+  .col-md-4
+    h4 
+      strong Content
+    = @question.content
+  .col-md-4
+    h4 
+      strong Source
+    = @question.source
+  .col-md-4
+    h4 
+      strong Year
+    = @question.year
+.row
+  .col-md-12
+    h4 
+      strong Choices
+    - @question.choices.each do |choice|
+      .col-md-4
+        = choice
 
-p
-  strong= model_class.human_attribute_name(:content) + ':'
-  br
-  = @question.content
-p
-  strong= model_class.human_attribute_name(:source) + ':'
-  br
-  = @question.source
-p
-  strong= model_class.human_attribute_name(:year) + ':'
-  br
-  = @question.year
-p
-  strong= model_class.human_attribute_name(:question_status_id) + ':'
-  br
-  = @question.question_status_id
-p
-  strong= model_class.human_attribute_name(:user_id) + ':'
-  br
-  = @question.user_id
+.hr-line-dashed
+.row
+  .col-md-12
+    h3 Question History
+    table.table.table-striped.table-responsive.table-bordered
+      thead
+        tr
 
-= link_to t('.back', :default => t("helpers.links.back")), questions_path, :class => 'btn btn-default'
-'
-= link_to t('.edit', :default => t("helpers.links.edit")), edit_question_path(@question), :class => 'btn btn-default'
-'
-= link_to t('.destroy', :default => t("helpers.links.destroy")), question_path(@question), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+          th = I18n.t("activerecord.attributes.cerquilha")
+          th = I18n.t("activerecord.attributes.revision_history.user")
+          th = I18n.t("activerecord.attributes.revision_history.status_question")
+          th = I18n.t("activerecord.attributes.revision_history.comment")
+
+      tbody
+        - if @question.revision_histories.any?
+          - @question.revision_histories.each do |revision|
+            tr
+              td = revision.created_at
+              td = revision.user_name
+              td = revision.question_status_name
+              td = revision.comment
+        - else
+          tr
+            td.text-center colspan=4
+              i This question wasn't reviewed yet

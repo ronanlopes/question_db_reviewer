@@ -120,5 +120,5 @@ body.modal-open {
 }
 
 .welcome-message{
-  float: right;
+  text-align: right;
 }
